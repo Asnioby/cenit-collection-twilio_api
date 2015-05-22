@@ -1,15 +1,7 @@
-require "cenit/collection/twilio_api/version"
-
 module Cenit
   module Collection
-    require "cenit/collection/twilio_api/build"
+    require File.expand_path(File.join(*%w[ twilio_api build ]), File.dirname(__FILE__))
     require "cenit/client"
-
-    # bundle exec irb -I lib -r 'cenit/collection/twilio_api'
-    # config = {:push_url => "https://www.cenithub.com/api/v1/push", :connection_token => "My Conn Token", :connection_key => "My Conn Key"}
-    # config = {:push_url => "https://www.cenithub.com/api/v1/push", :user_token => "My User Token", :user_key => "My User Key"}
-    # Cenit::Collection::TwilioApi.push_collection config
-    # Cenit::Collection::TwilioApi.shared_collection
 
     @twilio_api = Cenit::Collection::TwilioApi::Build.new
 
@@ -31,7 +23,11 @@ module Cenit
     end
 
     def self.push_sample(model, config)
-      Cenit::Client.push(@twilio_api.sample_data(model).to_json, config)
+      Cenit::Client.push(@twilio_api.sample_model(model).to_json, config)
+    end
+
+    def self.import(data)
+      @twilio_api.import_data(data)
     end
   end
 end
