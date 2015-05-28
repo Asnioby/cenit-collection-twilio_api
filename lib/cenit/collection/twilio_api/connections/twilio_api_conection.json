@@ -12,7 +12,7 @@
     },
     {
       "key": "Authorization",
-      "value": "Basic {% base64 account_sid:auth_token %}"
+      "value": "Basic {% base64 (account_sid + ':'  + auth_token) %}"
     }
   ],
   "template_parameters": [
