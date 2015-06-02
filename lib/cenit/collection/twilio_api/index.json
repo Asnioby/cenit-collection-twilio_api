@@ -2,6 +2,8 @@
   "name": "Twilio API Integration",
   "category": "Collection",
   "description": "Twilio API Integration",
+  "shared_version": "1.0.0",
+  "data": { "name": "Twilio API Integration" },
   "pull_parameters": [
     {
       "label": "Account SID",
